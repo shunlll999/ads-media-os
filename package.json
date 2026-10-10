@@ -1,0 +1,40 @@
+{
+  "name": "planb-media-os-nextjs",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "build:webpack": "next build --webpack",
+    "gateway:setup": "node scripts/setup-gateway.mjs",
+    "gateway:up": "docker compose -f media-os-gateway/compose.yaml --env-file media-os-gateway/.env up -d --build --wait",
+    "gateway:down": "docker compose -f media-os-gateway/compose.yaml --env-file media-os-gateway/.env down",
+    "gateway:test": "docker compose -f media-os-gateway/compose.yaml --env-file media-os-gateway/.env exec -T gateway npm test",
+    "local:up": "npm run gateway:setup && docker compose -f compose.local.yaml --env-file media-os-gateway/.env up -d --build --wait",
+    "local:down": "docker compose -f compose.local.yaml --env-file media-os-gateway/.env down",
+    "local:status": "docker compose -f compose.local.yaml --env-file media-os-gateway/.env ps",
+    "local:logs": "docker compose -f compose.local.yaml --env-file media-os-gateway/.env logs -f --tail=100",
+    "account:admin": "node scripts/local-admin.mjs",
+    "screens:samples": "node scripts/restore-sample-screens.mjs"
+  },
+  "dependencies": {
+    "leaflet": "1.9.4",
+    "next": "16.3.8",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-leaflet": "5.0.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.15",
+    "@types/leaflet": "1.9.22",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "sass": "1.105.1",
+    "typescript": "^5.9.0"
+  }
+}

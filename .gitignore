@@ -1,0 +1,35 @@
+/node_modules
+/.next
+/out
+.DS_Store
+*.log
+.env*
+!.env.example
+
+/.prototype-data
+*.tsbuildinfo
+/.firebase
+/media-os-gateway/src/generated
+/media-os-gateway/dist
+/backups
+
+# Local-only identity, operational notes, real project data and deployment configuration
+/.local-only/
+/*_TH.md
+/AGENTS.md
+/CLAUDE.md
+/.firebaserc
+/firebase.json
+/.gcloudignore
+/firebase-public/
+/media-os-gateway/.gcloudignore
+/scripts/cloud-power.sh
+/media-os-gateway/data/seed.json
+/media-os-gateway/data/import-example.json
+/public/projects/
+*.private.*
+
+# Only README Markdown files are published. All other Markdown stays local.
+*.[mM][dD]
+!README.md
+!readme.md

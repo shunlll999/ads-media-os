@@ -1,0 +1,59 @@
+# Area preview photo credits
+
+These are reference photographs of each area, not live imagery or photographs of booked media units. Downloaded thumbnails are stored locally. Images are displayed with CSS cover cropping; their underlying files retain the complete frame (Siam is resized to 960px). Image licenses apply to the photographs separately from the application code.
+
+## Asok
+
+- File: `/areas/asok.jpg`
+- Author: Chainwit.
+- Source: https://commons.wikimedia.org/wiki/File:Sukhumwit_Road_with_BTS_Asok_and_Asok_Montri_Rd.jpg
+- License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0)
+
+## Sukhumvit
+
+- File: `/areas/sukhumvit.jpg`
+- Author: OPK-Photography
+- Source: https://commons.wikimedia.org/wiki/File:Bangkok,_Thailand,_Sukhumvit_Road,_2024.jpg
+- License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0)
+
+## Silom
+
+- File: `/areas/silom.jpg`
+- Author: Diliff
+- Source: https://commons.wikimedia.org/wiki/File:Bangkok_skytrain_sunset.jpg
+- License: [CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/)
+
+## Rama 9
+
+- File: `/areas/rama-9.jpg`
+- Author: Magnamonkun
+- Source: https://commons.wikimedia.org/wiki/File:CentralPlaza_Grand_Rama_IX_-_Entrance.jpg
+- License: [CC BY 3.0](https://creativecommons.org/licenses/by/3.0)
+
+## Chatuchak
+
+- File: `/areas/chatuchak.jpg`
+- Author: Jarcje
+- Source: https://commons.wikimedia.org/wiki/File:Chatuchak_weekend_market_roofs.jpg
+- License: [CC BY 2.5](https://creativecommons.org/licenses/by/2.5)
+
+## Thonburi
+
+- File: `/areas/thonburi.jpg`
+- Author: Paul_012
+- Source: https://commons.wikimedia.org/wiki/File:Wat_Arun_across_the_river_Sep_2023_morning.jpg
+- License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0)
+
+## Suvarnabhumi
+
+- File: `/areas/suvarnabhumi.jpg`
+- Author: Mattes
+- Source: https://commons.wikimedia.org/wiki/File:Suvarnabhumi_Airport_-_main_building_seen_from_the_PAX_multi-storey_car_park.JPG
+- License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.en)
+
+## Siam
+
+- File: `/areas/siam.jpg`
+- Author: Christian Henrich
+- Source: https://commons.wikimedia.org/wiki/File:Siam_Paragon_Bangkok_2.jpg
+- License: [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/)

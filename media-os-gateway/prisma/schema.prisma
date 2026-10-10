@@ -1,0 +1,201 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "esm"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Project {
+  id        String     @id
+  payload   Json
+  updatedAt DateTime   @default(now()) @map("updated_at") @db.Timestamptz(6)
+  creatives Creative[]
+  campaigns Campaign[]
+
+  @@map("projects")
+}
+
+model Inventory {
+  id            String              @id
+  area          String
+  price         Decimal             @db.Decimal(14, 2)
+  availableFrom DateTime            @map("available_from") @db.Date
+  availableTo   DateTime            @map("available_to") @db.Date
+  payload       Json
+  campaigns     CampaignInventory[]
+  screens       Screen[]
+
+  @@index([area], map: "inventory_area_idx")
+  @@map("inventory")
+}
+
+model Creative {
+  id               String            @id
+  projectId        String?           @map("project_id")
+  kind             String
+  payload          Json
+  createdAt        DateTime          @default(now()) @map("created_at") @db.Timestamptz(6)
+  project          Project?          @relation(fields: [projectId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  campaigns        Campaign[]
+  playlistItems    PlaylistItem[]
+  playbackSessions PlaybackSession[]
+
+  @@index([projectId], map: "creatives_project_idx")
+  @@map("creatives")
+}
+
+model Campaign {
+  id               String              @id
+  sourceProjectId  String?             @map("source_project_id")
+  creativeId       String?             @map("creative_id")
+  status           String
+  startDate        DateTime            @map("start_date") @db.Date
+  endDate          DateTime            @map("end_date") @db.Date
+  payload          Json
+  createdAt        DateTime            @default(now()) @map("created_at") @db.Timestamptz(6)
+  sourceProject    Project?            @relation(fields: [sourceProjectId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  creative         Creative?           @relation(fields: [creativeId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  inventory        CampaignInventory[]
+  playlistItems    PlaylistItem[]
+  playbackSessions PlaybackSession[]
+
+  @@index([sourceProjectId], map: "campaigns_project_idx")
+  @@index([creativeId], map: "campaigns_creative_idx")
+  @@map("campaigns")
+}
+
+model CampaignInventory {
+  campaignId  String    @map("campaign_id")
+  inventoryId String    @map("inventory_id")
+  campaign    Campaign  @relation(fields: [campaignId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  inventory   Inventory @relation(fields: [inventoryId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([campaignId, inventoryId])
+  @@index([inventoryId], map: "campaign_inventory_placement_idx")
+  @@map("campaign_inventory")
+}
+
+model Screen {
+  id               String            @id
+  inventoryId      String?           @map("inventory_id")
+  tokenHash        String?           @map("token_hash")
+  payload          Json
+  lastSeenAt       DateTime?         @map("last_seen_at") @db.Timestamptz(6)
+  inventory        Inventory?        @relation(fields: [inventoryId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  playlistItems    PlaylistItem[]
+  playbackSessions PlaybackSession[]
+
+  @@index([inventoryId], map: "screens_inventory_idx")
+  @@map("screens")
+}
+
+model PlaylistItem {
+  screenId   String    @map("screen_id")
+  creativeId String?   @map("creative_id")
+  campaignId String?   @map("campaign_id")
+  position   Int
+  screen     Screen    @relation(fields: [screenId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  creative   Creative? @relation(fields: [creativeId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  campaign   Campaign? @relation(fields: [campaignId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([screenId, position])
+  @@index([creativeId], map: "playlist_creative_idx")
+  @@index([campaignId], map: "playlist_campaign_idx")
+  @@map("playlist_items")
+}
+
+model PlaybackSession {
+  id          String    @id @db.Uuid
+  screenId    String    @map("screen_id")
+  creativeId  String    @map("creative_id")
+  campaignId  String?   @map("campaign_id")
+  mode        String
+  startedAt   DateTime  @default(now()) @map("started_at") @db.Timestamptz(6)
+  completedAt DateTime? @map("completed_at") @db.Timestamptz(6)
+  durationMs  Int?      @map("duration_ms")
+  screen      Screen    @relation(fields: [screenId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  creative    Creative  @relation(fields: [creativeId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  campaign    Campaign? @relation(fields: [campaignId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([screenId, startedAt(sort: Desc)], map: "playback_screen_time_idx")
+  @@index([campaignId, startedAt(sort: Desc)], map: "playback_campaign_time_idx")
+  @@index([creativeId], map: "playback_creative_idx")
+  @@map("playback_sessions")
+}
+
+model ProgrammaticRecord {
+  id        String   @id
+  kind      String
+  payload   Json
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  @@index([kind], map: "programmatic_kind_idx")
+  @@map("programmatic_records")
+}
+
+model ProgrammaticTransaction {
+  id          String   @id
+  dealId      String   @map("deal_id")
+  inventoryId String   @map("inventory_id")
+  occurredAt  DateTime @map("occurred_at") @db.Timestamptz(6)
+  source      String
+  impressions Int
+  requests    Int
+  bids        Int
+  wins        Int
+  spend       Decimal  @db.Decimal(14, 2)
+  sspFee      Decimal  @map("ssp_fee") @db.Decimal(14, 2)
+  cost        Decimal  @db.Decimal(14, 2)
+  @@index([occurredAt], map: "programmatic_transaction_time_idx")
+  @@index([dealId, occurredAt], map: "programmatic_transaction_deal_idx")
+  @@map("programmatic_transactions")
+}
+
+model User {
+  id String @id @db.Uuid
+  email String @unique
+  name String
+  passwordHash String @map("password_hash")
+  role String
+  active Boolean @default(true)
+  authVersion Int @default(0) @map("auth_version")
+  failedAttempts Int @default(0) @map("failed_attempts")
+  lockedUntil DateTime? @map("locked_until") @db.Timestamptz(6)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  sessions AuthSession[]
+  drafts UserDraft[]
+  @@map("users")
+}
+model AuthSession {
+  id String @id @db.Uuid
+  userId String @map("user_id") @db.Uuid
+  expiresAt DateTime @map("expires_at") @db.Timestamptz(6)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId])
+  @@map("auth_sessions")
+}
+model WorkspaceSetting {
+  key String @id
+  payload Json
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  @@map("workspace_settings")
+}
+model UserDraft {
+  userId String @map("user_id") @db.Uuid
+  key String
+  payload Json
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@id([userId,key])
+  @@map("user_drafts")
+}
+model AuditLog {
+  id String @id @db.Uuid
+  userId String @map("user_id")
+  action String
+  resource String
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  @@index([createdAt(sort: Desc)])
+  @@map("audit_logs")
+}

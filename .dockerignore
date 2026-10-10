@@ -1,0 +1,15 @@
+node_modules
+.next
+.git
+.firebase
+.prototype-data
+.env*
+!.env.example
+media-os-gateway
+*.log
+*.tsbuildinfo
+
+.local-only
+**/.local-only
+backups
+**/backups

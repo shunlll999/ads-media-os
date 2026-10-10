@@ -1,0 +1,48 @@
+{
+  "projects": [
+    {
+      "id": "studio",
+      "name": "Studio Demo",
+      "category": "Engineering portfolio",
+      "url": "https://example.com/studio",
+      "image": "/assets/demo-launch.svg",
+      "description": "A fictional project used to demonstrate campaign planning and content delivery.",
+      "capabilities": ["Campaign demo", "Project card"],
+      "publicStatus": "Demo only",
+      "reviewedAt": "2026-10-06",
+      "suggestedBrief": {
+        "name": "Studio Demo Launch",
+        "objective": "Product Launch",
+        "audience": "Example audience for a simulated campaign"
+      },
+      "dataSource": "mock"
+    }
+  ],
+  "inventory": [
+    {
+      "id": "my-display-01",
+      "name": "Replace with your placement name",
+      "area": "Bangkok",
+      "type": "Digital Billboard",
+      "price": 50000,
+      "latitude": 13.7563,
+      "longitude": 100.5018,
+      "availableFrom": "2026-10-01",
+      "availableTo": "2027-12-31",
+      "dataSource": "mock",
+      "format": "Landscape",
+      "dimensions": "1920 × 1080",
+      "reach": "Not measured"
+    }
+  ],
+  "creatives": [
+    {
+      "name": "Demo project card",
+      "kind": "project",
+      "projectId": "studio",
+      "durationSeconds": 15,
+      "fit": "contain",
+      "dataSource": "mock"
+    }
+  ]
+}

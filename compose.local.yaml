@@ -1,0 +1,28 @@
+name: media-os-gateway
+include:
+  - path: media-os-gateway/compose.yaml
+    env_file: media-os-gateway/.env
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      PORT: 8080
+      HOSTNAME: 0.0.0.0
+      MEDIA_OS_GATEWAY_URL: http://gateway:4000
+      MEDIA_OS_GATEWAY_API_KEY: ${GATEWAY_API_KEY:?Run npm run gateway:setup first}
+      MEDIA_OS_REQUIRE_ADMIN_AUTH: "false"
+      MEDIA_OS_PUBLIC_ORIGIN: http://127.0.0.1:${DOCKER_WEB_PORT:-3001}
+    ports:
+      - "127.0.0.1:${DOCKER_WEB_PORT:-3001}:8080"
+    depends_on:
+      gateway:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:8080/api/media').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 5s
+      timeout: 5s
+      start_period: 20s
+      retries: 20
+    restart: unless-stopped

@@ -1,0 +1,234 @@
+{
+  "overview": {
+    "network": {
+      "availableUnits": 1240,
+      "provinces": 71,
+      "digitalUnits": 428,
+      "fillRate": "92%"
+    },
+    "kpis": [
+      {
+        "icon": "people",
+        "label": "Estimated Reach",
+        "value": "8.42M",
+        "note": "+12% vs. last plan"
+      },
+      {
+        "icon": "chart",
+        "label": "Estimated Frequency",
+        "value": "4.8x",
+        "note": "Within target range"
+      },
+      {
+        "icon": "screen",
+        "label": "Available Media Units",
+        "value": "428",
+        "note": "Across 5 focus areas"
+      },
+      {
+        "icon": "pie",
+        "label": "Budget Utilization",
+        "value": "92%",
+        "note": "\u0e3f80K remaining"
+      }
+    ],
+    "source": "mock"
+  },
+  "planning": {
+    "budget": 1000000,
+    "objective": "Product Launch",
+    "audience": "Age 25\u201340 \u00b7 Bangkok \u00b7 Tech & Lifestyle",
+    "startDate": "2026-11-01",
+    "endDate": "2026-11-30",
+    "objectives": ["Product Launch", "Brand Awareness", "Store Traffic"],
+    "mapFilters": ["All Media", "Digital", "Transit", "Airport", "Retail"],
+    "demoCreativeId": "demo-creative",
+    "demoCampaignName": "Media OS Demo Launch"
+  },
+  "areaPhotos": {
+    "Asok": {
+      "src": "/areas/asok.jpg",
+      "alt": "Sukhumwit Road at the intersection with Asok Montri Road",
+      "author": "Chainwit.",
+      "source": "https://commons.wikimedia.org/wiki/File:Sukhumwit_Road_with_BTS_Asok_and_Asok_Montri_Rd.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    "Sukhumvit": {
+      "src": "/areas/sukhumvit.jpg",
+      "alt": "Sukhumvit Road in Bangkok",
+      "author": "OPK-Photography",
+      "source": "https://commons.wikimedia.org/wiki/File:Bangkok,_Thailand,_Sukhumvit_Road,_2024.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    "Silom": {
+      "src": "/areas/silom.jpg",
+      "alt": "A spectacular sunset in Bangkok, showing the skytrain and modern skyline down Thanon Naradhiwas Rajanagarindra, taken from the corner of Thanon Silom, with the Empire Tower and the Chong Nonsi BTS Station at the left side.",
+      "author": "Diliff",
+      "source": "https://commons.wikimedia.org/wiki/File:Bangkok_skytrain_sunset.jpg",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+    },
+    "Rama 9": {
+      "src": "/areas/rama-9.jpg",
+      "alt": "Central Rama 9 shopping mall",
+      "author": "Magnamonkun",
+      "source": "https://commons.wikimedia.org/wiki/File:CentralPlaza_Grand_Rama_IX_-_Entrance.jpg",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+    },
+    "Chatuchak": {
+      "src": "/areas/chatuchak.jpg",
+      "alt": "Chatuchak weekend market - Part of the massive market with the clock tower shown in the middle.",
+      "author": "Jarcje",
+      "source": "https://commons.wikimedia.org/wiki/File:Chatuchak_weekend_market_roofs.jpg",
+      "license": "CC BY 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
+    },
+    "Thonburi": {
+      "src": "/areas/thonburi.jpg",
+      "alt": "Direct frontal view of en:Wat Arun from across the river, September 2023",
+      "author": "Paul_012",
+      "source": "https://commons.wikimedia.org/wiki/File:Wat_Arun_across_the_river_Sep_2023_morning.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    "Suvarnabhumi": {
+      "src": "/areas/suvarnabhumi.jpg",
+      "alt": "Suvarnabhumi International Airport (Thailand), north side of main building with streets.",
+      "author": "Mattes",
+      "source": "https://commons.wikimedia.org/wiki/File:Suvarnabhumi_Airport_-_main_building_seen_from_the_PAX_multi-storey_car_park.JPG",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.en"
+    },
+    "Siam": {
+      "src": "/areas/siam.jpg",
+      "alt": "Exterior of Siam Paragon shopping mall in Bangkok",
+      "author": "Christian Henrich",
+      "source": "https://commons.wikimedia.org/wiki/File:Siam_Paragon_Bangkok_2.jpg",
+      "license": "CC BY-SA 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5/"
+    }
+  },
+  "analytics": {
+    "demo-live": {
+      "campaignId": "demo-live",
+      "reach": "6.54M",
+      "frequency": "4.9x",
+      "proofOfPlay": "98.7%",
+      "deliveredPlays": 1184,
+      "scheduledPlays": 1200,
+      "storeVisits": "1,920",
+      "engagements": "13.2K",
+      "roas": "3.2x",
+      "topLocations": [
+        {
+          "area": "Siam Square",
+          "impressions": "3.1M",
+          "proofOfPlay": "99.0%"
+        },
+        {
+          "area": "Asok Intersection",
+          "impressions": "2.4M",
+          "proofOfPlay": "98.6%"
+        },
+        {
+          "area": "Sukhumvit Corridor",
+          "impressions": "1.8M",
+          "proofOfPlay": "98.4%"
+        },
+        {
+          "area": "Rama 9 Retail",
+          "impressions": "1.1M",
+          "proofOfPlay": "98.1%"
+        }
+      ],
+      "measurementSource": "mock",
+      "deliveredImpressions": "21.4M",
+      "trend": [10, 17, 26, 32, 45, 51, 57, 65, 77, 83, 87]
+    },
+    "demo-completed": {
+      "campaignId": "demo-completed",
+      "reach": "9.12M",
+      "frequency": "5.1x",
+      "proofOfPlay": "99.1%",
+      "deliveredPlays": 1491,
+      "scheduledPlays": 1505,
+      "storeVisits": "2,410",
+      "engagements": "18.8K",
+      "roas": "3.6x",
+      "topLocations": [
+        {
+          "area": "Siam Transit",
+          "impressions": "3.5M",
+          "proofOfPlay": "99.4%"
+        },
+        {
+          "area": "Asok Transit",
+          "impressions": "2.8M",
+          "proofOfPlay": "99.0%"
+        },
+        {
+          "area": "Chatuchak",
+          "impressions": "2.1M",
+          "proofOfPlay": "98.9%"
+        }
+      ],
+      "measurementSource": "mock",
+      "deliveredImpressions": "21.4M",
+      "trend": [10, 17, 26, 32, 45, 51, 57, 65, 77, 83, 87]
+    }
+  },
+  "programmatic": {
+    "profile": {
+      "venueId": "",
+      "latitude": 13.7466,
+      "longitude": 100.5348,
+      "screenSize": "6 \u00d7 3.375 m",
+      "width": 1920,
+      "height": 1080,
+      "slotDuration": 15,
+      "loopDuration": 120,
+      "operatingStart": "06:00",
+      "operatingEnd": "23:00",
+      "cms": "Media OS mock CMS",
+      "ssp": "Mock SSP",
+      "sspInventoryId": "",
+      "floorCpm": 100,
+      "audiencePerPlay": 30
+    },
+    "deal": {
+      "type": "PMP",
+      "dsp": "Mock DSP",
+      "ssp": "Mock SSP",
+      "cpm": 191,
+      "floorCpm": 100,
+      "budget": 500000,
+      "impressionTarget": 2500000,
+      "sspFeePercent": 15
+    },
+    "revenueTarget": 10000000
+  },
+  "importTemplate": {
+    "projects": [],
+    "inventory": [
+      {
+        "id": "my-led-01",
+        "name": "My placement",
+        "area": "Bangkok",
+        "type": "Digital Billboard",
+        "price": 50000,
+        "dataSource": "mock",
+        "latitude": 13.7563,
+        "longitude": 100.5018,
+        "availableFrom": "2026-10-01",
+        "availableTo": "2027-12-31",
+        "format": "Landscape",
+        "dimensions": "1920 \u00d7 1080",
+        "reach": "Not measured"
+      }
+    ],
+    "creatives": []
+  }
+}

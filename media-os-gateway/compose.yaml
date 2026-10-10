@@ -1,0 +1,47 @@
+name: media-os-gateway
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: media_os
+      POSTGRES_USER: media_os
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5433}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U media_os -d media_os"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+  gateway:
+    build: .
+    command: ["sh", "-c", "node scripts/prepare-local-db.mjs && exec node dist/main.js"]
+    environment:
+      DATABASE_URL: postgres://media_os:${POSTGRES_PASSWORD}@postgres:5432/media_os
+      GATEWAY_API_KEY: ${GATEWAY_API_KEY:?Set GATEWAY_API_KEY in .env}
+      PORT: 4000
+      JWT_SECRET: ${JWT_SECRET:?Run npm run gateway:setup}
+      BOOTSTRAP_ADMIN_EMAIL: ${BOOTSTRAP_ADMIN_EMAIL:-admin@media-os.local}
+      BOOTSTRAP_ADMIN_PASSWORD: ${BOOTSTRAP_ADMIN_PASSWORD:?Run npm run gateway:setup}
+      SEED_DEMO: ${SEED_DEMO:-true}
+      PROJECT_PUBLIC_HOSTS: ${PROJECT_PUBLIC_HOSTS:-example.com}
+      BOOTSTRAP_ADMIN_NAME: ${BOOTSTRAP_ADMIN_NAME:-Administrator}
+    ports:
+      - "127.0.0.1:${GATEWAY_PORT:-4000}:4000"
+    volumes:
+      - creative_uploads:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:4000/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+volumes:
+  postgres_data:
+  creative_uploads:
